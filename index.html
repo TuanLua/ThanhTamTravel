@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thanh Tâm Travel</title>
+  <meta name="description" content="Bản mẫu trang web dịch vụ thuê xe cao cấp – tối ưu chuyển đổi, chuẩn SEO, responsive." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-4oVf3CqF7rZpLkz3T7NnL4rM3hGdQv9Wv2a1qj1P2V3T6p9y5GxJk4n7k1Z8n9c7b8a9c9k1l2m3n4o5p6" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root{
+      --primary:#0f62fe;/* xanh dương chủ đạo */
+      --primary-600:#0b4cd6;
+      --bg:#0b1020;
+      --text:#0f1222;
+      --muted:#667085;
+      --card:#ffffff;
+      --light:#f5f7fb;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(11,16,32,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:#ffffff}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1180px,92vw);margin-inline:auto}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eef0f6;backdrop-filter:saturate(1.2) blur(6px)}
+    .topbar{display:flex;gap:14px;align-items:center;justify-content:center;padding:6px 10px;background:linear-gradient(90deg,var(--primary),#4f9cff);color:#fff;font-weight:600;font-size:14px}
+    .topbar i{margin-right:6px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--primary)}
+    .brand .logo{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#7fb3ff, var(--primary));box-shadow:inset 0 0 12px rgba(255,255,255,.35)}
+    .menu{display:flex;gap:22px;align-items:center}
+    .menu a{font-weight:600;color:#1b1f2a;opacity:.9}
+    .menu a:hover{color:var(--primary)}
+    .cta{display:flex;gap:10px;align-items:center}
+    .btn{padding:12px 16px;border-radius:999px;border:1px solid transparent;font-weight:700;cursor:pointer;transition:.2s all}
+    .btn.primary{background:var(--primary);color:#fff;box-shadow:var(--shadow)}
+    .btn.primary:hover{background:var(--primary-600)}
+    .btn.ghost{background:#fff;border-color:#e5e7f0}
+    .hamb{display:none}
+    @media (max-width:900px){
+      .menu{display:none}
+      .hamb{display:block}
+    }
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero-media{position:absolute;inset:0;z-index:-1;overflow:hidden;border-bottom-left-radius:40px;border-bottom-right-radius:40px}
+    .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;filter:brightness(.65)}
+    .hero-inner{padding:96px 0 64px;min-height:70vh;display:grid;place-items:center}
+    .hero-card{background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border:1px solid #e9ecf5;box-shadow:var(--shadow);border-radius:24px;padding:28px;display:grid;gap:16px;width:min(920px,94vw)}
+    .kicker{font-weight:800;letter-spacing:.12em;color:var(--primary);font-size:14px;text-transform:uppercase}
+    .hero h1{font-size:clamp(28px,4.4vw,44px);margin:0;line-height:1.22}
+    .hero p{margin:0;color:#475070}
+    .lead-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .lead-actions .btn{padding:12px 18px}
+    /* Brand section */
+    section{padding:70px 0}
+    .section-title{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+    .section-title h2{margin:0;font-size:clamp(22px,3.2vw,32px)}
+    .pill{font-size:12px;padding:6px 10px;border-radius:999px;background:#eef4ff;color:var(--primary);font-weight:700}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){
+      .grid.cols-4{grid-template-columns:repeat(2,1fr)}
+      .grid.cols-3{grid-template-columns:repeat(1,1fr)}
+      .grid.cols-2{grid-template-columns:1fr}
+    }
+    .card{background:var(--card);border:1px solid #eef0f6;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card.p{padding:18px}
+    .icon-badge{width:46px;height:46px;border-radius:12px;background:#ecf2ff;display:grid;place-items:center;color:var(--primary)}
+    .muted{color:var(--muted)}
+    /* Services */
+    .service{display:flex;gap:14px}
+    .service h3{margin:.2rem 0}
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+    .gallery img{aspect-ratio:1.2/1;border-radius:14px;object-fit:cover}
+    @media (max-width:900px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    /* Testimonials */
+    .testi{display:grid;gap:16px}
+    .quote{display:flex;gap:14px;align-items:flex-start}
+    .avatar{width:56px;height:56px;border-radius:50%;object-fit:cover}
+    /* Booking */
+    .booking{background:linear-gradient(0deg,#f7f9ff,#ffffff)}
+    form{display:grid;gap:12px}
+    .row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:800px){.row{grid-template-columns:1fr}}
+    input,select,textarea{padding:12px 14px;border:1px solid #dfe3ef;border-radius:12px;font:inherit}
+    textarea{min-height:110px}
+    .notice{font-size:12px;color:#6b7280}
+    /* Footer */
+    footer{background:#0b1222;color:#c9d2e8;border-top-left-radius:28px;border-top-right-radius:28px}
+    footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+    footer a{color:#dfe7ff}
+    footer li{margin:6px 0}
+    @media (max-width:900px){footer .cols{grid-template-columns:1fr}}
+    /* Hiệu ứng overlay trên video */
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+  z-index: -1;
+}
+
+/* Hiệu ứng video zoom chậm */
+.hero-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoomIn 20s infinite alternate;
+}
+
+/* Animation cho text */
+.kicker, .hero-card h1, .hero-card p, .lead-actions {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+
+.kicker { animation-delay: 0.2s; }
+.hero-card h1 { animation-delay: 0.4s; }
+.hero-card p { animation-delay: 0.6s; }
+.lead-actions { animation-delay: 0.8s; }
+
+/* Button hover */
+.btn.primary:hover {
+  background: #d62828;
+  box-shadow: 0 0 15px rgba(230,57,70,0.6);
+}
+
+.btn.ghost:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+/* Scroll down indicator */
+.scroll-down {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #fff;
+  animation: bounce 1.5s infinite;
+}
+
+/* Keyframes */
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 10px); }
+}
+@keyframes zoomIn {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* Section intro */
+.intro-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f9f9f9, #fff);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card service */
+.service {
+  text-align: center;
+  border-radius: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: #fff;
+}
+
+.service:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Icon badge */
+.icon-badge {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #d62828;
+  transition: transform 0.5s ease, color 0.3s ease;
+}
+
+.service:hover .icon-badge {
+  color: #e63946;
+  transform: rotate(12deg) scale(1.2);
+}
+
+/* Animation reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Fullscreen section với background */
+.intro-section.with-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background: url("C:/Users/Administrator/Desktop/CarRent/Web/Images/pexels-photo-9459292.jpeg") no-repeat center center/cover;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Overlay để chữ và card dễ đọc */
+.intro-section.with-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+/* Container và nội dung nổi trên overlay */
+.intro-section .container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Grid cho card */
+.grid.cols-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Card service */
+.service {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 30px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  color: #333;
+}
+.service:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+/* Icon badge */
+.icon-badge {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: #d62828;
+  transition: transform 0.5s ease, color 0.3s ease;
+}
+.service:hover .icon-badge {
+  color: #e63946;
+  transform: rotate(12deg) scale(1.2);
+}
+
+.service-section.with-bg {
+  background: linear-gradient(180deg, #f7f9ff 0%, #ffffff 100%);
+  padding: 100px 20px;
+  position: relative;
+}
+
+.service-grid {
+  gap: 30px;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-card img {
+  width: 100%;
+  height: 250px; /* to hơn */
+  object-fit: cover;
+}
+
+.service-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.18);
+}
+/* Gallery section */
+.gallery-section {
+  padding: 100px 20px;
+  background: #fff;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Lightbox overlay */
+#lightbox {
+  display: none; 
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  text-align: center;
+  padding-top: 80px;
+}
+
+#lightbox img.lightbox-content {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+#lightbox .caption {
+  margin-top: 15px;
+  color: #ccc;
+  font-size: 18px;
+}
+
+#lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#lightbox .close:hover {
+  color: #f44336;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <span><i class="fa-solid fa-phone"></i> Hotline: <a href="tel:0375119309">0375 119  309</a></span>
+      <span>•</span>
+      <span><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:thanhtamtravel59@gmail.com">thanhtamtravel59@gmail.com</a></span>
+    </div>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Thanh Tâm  <span style="color:#222">Travel</span></span>
+      </a>
+      <nav class="menu" aria-label="Main Navigation">
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#dich-vu">Dịch vụ</a>
+        <a href="#thu-vien">Hình ảnh</a>
+        <a href="#danh-gia">Đánh giá</a>
+        <a href="#dat-xe">Đặt xe</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
+      <div class="cta">
+        <a class="btn ghost" href="https://zalo.me" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-messenger"></i> Chat</a>
+        <a class="btn primary" href="tel:0375119309"><i class="fa-solid fa-phone"></i> Gọi ngay</a>
+        <button class="hamb btn ghost" id="openMenu" aria-label="Mở menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+ <section class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <video autoplay muted loop playsinline poster="C:\Users\Administrator\Desktop\CarRent\Web\Images\2f42b9c4d7704216cebcdadff4068b13.jpg">
+      <source src="C:\Users\Administrator\Desktop\CarRent\Web\Images\vecteezy_3d-car-driving-through-smoky-atmosphere-with-cinematic_54737443.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="container hero-inner">
+    <div class="hero-card">
+      <div class="kicker">Thương hiệu cho những hành trình đáng giá</div>
+      <h1>Thuê xe du lịch – Limousine cao cấp<br/>Xe đẹp, tài xế chuyên nghiệp, giá tốt</h1>
+      <p>Chúng tôi tập trung các tuyến hot: TP.HCM ⇄ Đà Lạt, Vũng Tàu, Phan Thiết, Mũi Né, Nha Trang, sân bay… Hỗ trợ 24/7.</p>
+      <div class="lead-actions">
+        <a class="btn primary" href="#dat-xe"><i class="fa-solid fa-car"></i> Đặt xe ngay</a>
+        <a class="btn ghost" href="#bang-gia"><i class="fa-solid fa-file-invoice-dollar"></i> Xem bảng giá</a>
+      </div>
+    </div>
+  </div>
+  <!-- Scroll indicator -->
+  <div class="scroll-down">
+    <i class="fa-solid fa-angles-down"></i>
+  </div>
+</section>
+
+<!-- INTRO / BRAND -->
+<!-- INTRO / BRAND -->
+<section id="gioi-thieu" class="intro-section with-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>Vì sao chọn chúng tôi?</h2>
+      <span class="pill">Uy tín • Tận tâm • An toàn</span>
+    </div>
+    <div class="grid cols-3">
+      <div class="card p service reveal">
+        <div class="icon-badge"><i class="fa-solid fa-shield-heart"></i></div>
+        <div>
+          <h3>Dịch vụ chuẩn 5★</h3>
+          <p class="muted">Xe đời mới, vệ sinh kỹ, nước suối – khăn lạnh, hỗ trợ 24/7.</p>
+        </div>
+      </div>
+      <div class="card p service reveal">
+        <div class="icon-badge"><i class="fa-solid fa-id-card-clip"></i></div>
+        <div>
+          <h3>Tài xế chuyên nghiệp</h3>
+          <p class="muted">Lịch sự, đúng giờ, rành đường – ưu tiên an toàn và trải nghiệm.</p>
+        </div>
+      </div>
+      <div class="card p service reveal">
+        <div class="icon-badge"><i class="fa-solid fa-money-bill-wave"></i></div>
+        <div>
+          <h3>Giá cạnh tranh</h3>
+          <p class="muted">Báo giá minh bạch, không phát sinh. Xuất hoá đơn khi cần.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- SERVICES -->
+  <section id="dich-vu" class="service-section with-bg">
+  <div class="container">
+    <div class="section-title">
+      <h2>Dòng xe & dịch vụ</h2>
+      <span class="pill">4–45 chỗ • Limousine</span>
+    </div>
+    <div class="grid cols-4 service-grid">
+      <div class="card p service-card">
+        <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\9x16awhite2025tototafortunerdr-2-4678.png" alt="Xe 4–7 chỗ">
+        <div class="service-info">
+          <h3>Xe 4–7 chỗ</h3>
+          <p class="muted">Phù hợp công tác, gia đình nhỏ, đưa đón sân bay.</p>
+        </div>
+      </div>
+      <div class="card p service-card">
+        <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\ford-transit-premium-16-cho-83201720171105-5134.png" alt="Xe 16 chỗ">
+        <div class="service-info">
+          <h3>Xe 16 chỗ</h3>
+          <p class="muted">Đi nhóm bạn, team nhỏ – rộng rãi, thoải mái.</p>
+        </div>
+      </div>
+      <div class="card p service-card">
+        <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\thue-xe-limousine-di-tinh-4-61630.jpeg" alt="Limousine VIP">
+        <div class="service-info">
+          <h3>Limousine VIP</h3>
+          <p class="muted">Ghế massage, rèm riêng tư, sạc USB – trải nghiệm cao cấp.</p>
+        </div>
+      </div>
+      <div class="card p service-card">
+        <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\z6854561972641a67cb8d24c79cc3eb5c1a18bf490e84d-3703.jpg" alt="Xe 29–45 chỗ">
+        <div class="service-info">
+          <h3>Xe 29–45 chỗ</h3>
+          <p class="muted">Tour đoàn, sự kiện, cưới hỏi – tối ưu chi phí.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- GALLERY -->
+  <section id="thu-vien">
+    <div class="container">
+      <div class="section-title">
+        <h2>Một số hình ảnh</h2>
+        <span class="pill">Xe đẹp – Nội thất sạch – Bảo trì định kỳ</span>
+      </div>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1200&auto=format&fit=crop" alt="Gallery item">
+        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop" alt="Gallery item">
+        <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\hyunhdai-universe-6-1-65440.jpg" alt="Gallery item">
+        <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\z6859718122766d6036bdedc0897f82ce4b9b5218b4e16-5085.jpg" alt="Gallery item">
+        <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\transit-limousine-10-cho-57780.jpg" alt="Gallery item">
+        <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\luxury-limousine-interior-640x800.jpg" alt="Gallery item">
+        <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\hyunhdai-universe-6-1-65440.jpg" alt="Gallery item">
+          <img src="C:\Users\Administrator\Desktop\CarRent\Web\Images\chi-tiet-toyota-fortuner-2021-may-xang-3-2648.jpg" alt="Gallery item">
+      </div>
+    </div>
+  </section>
+<div id="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+  <div class="caption" id="caption"></div>
+</div>
+  <!-- TESTIMONIALS -->
+  <section id="danh-gia" style="background:#f7f9ff">
+    <div class="container">
+      <div class="section-title">
+        <h2>Đánh giá của khách hàng</h2>
+        <span class="pill">Thật – Nhanh – Tích cực</span>
+      </div>
+      <div class="grid cols-3 testi" id="testiList">
+        <div class="card p quote">
+          <img class="avatar" src="https://i.pravatar.cc/112?img=11" alt="Khách 1">
+          <div>
+            <p>“Xe sạch sẽ, chạy êm, tài xế dễ thương. Nhóm mình đi Vũng Tàu rất ưng!”</p>
+            <div class="muted">Nguyễn Văn Hưng • Nhân viên văn phòng</div>
+          </div>
+        </div>
+        <div class="card p quote">
+          <img class="avatar" src="https://i.pravatar.cc/112?img=32" alt="Khách 2">
+          <div>
+            <p>“Báo giá rõ ràng, không phát sinh. Sẽ tiếp tục sử dụng cho chuyến Đà Lạt.”</p>
+            <div class="muted">Lê Thị Kim Liên • Chủ shop thời trang</div>
+          </div>
+        </div>
+        <div class="card p quote">
+          <img class="avatar" src="https://i.pravatar.cc/112?img=56" alt="Khách 3">
+          <div>
+            <p>“Limousine ghế massage quá đã. Cả gia đình thoải mái, bé ngủ ngon suốt đường.”</p>
+            <div class="muted">Phạm Lê Kiều Hương • Chủ Spa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="dat-xe" class="booking">
+    <div class="container">
+      <div class="section-title">
+        <h2>Đăng ký đặt xe</h2>
+        <span class="pill">Phản hồi trong 5–10 phút</span>
+      </div>
+      <div class="grid cols-2">
+        <div class="card p">
+          <form id="bookingForm">
+            <div class="row">
+              <div>
+                <label for="service" class="muted">Dịch vụ cần đặt*</label>
+                <select id="service" required>
+                  <option value="">— Chọn dịch vụ —</option>
+                  <option>Xe 4 chỗ</option>
+                  <option>Xe 7 chỗ</option>
+                  <option>Xe 16 chỗ</option>
+                  <option>Xe 29–45 chỗ</option>
+                  <option>Limousine VIP</option>
+                  <option>Đưa đón sân bay</option>
+                </select>
+              </div>
+              <div>
+                <label for="name" class="muted">Họ và tên*</label>
+                <input id="name" required placeholder="Nguyễn Văn A" />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="phone" class="muted">Điện thoại*</label>
+                <input id="phone" required placeholder="09xx xxx xxx" />
+              </div>
+              <div>
+                <label for="email" class="muted">Email</label>
+                <input id="email" type="email" placeholder="ban@congty.vn" />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="date" class="muted">Ngày đi*</label>
+                <input id="date" type="date" required />
+              </div>
+              <div>
+                <label for="time" class="muted">Giờ đón*</label>
+                <input id="time" type="time" required />
+              </div>
+            </div>
+            <div>
+              <label for="route" class="muted">Tuyến / điểm đi – đến</label>
+              <input id="route" placeholder="TP.HCM ⇄ Đà Lạt / Sân bay Tân Sơn Nhất…" />
+            </div>
+            <div>
+              <label for="note" class="muted">Ghi chú</label>
+              <textarea id="note" placeholder="Số hành khách, hành lý, yêu cầu thêm…"></textarea>
+            </div>
+            <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Gửi yêu cầu</button>
+            <div class="notice">* Thông tin của bạn được bảo mật. Chúng tôi sẽ gọi lại xác nhận.</div>
+          </form>
+        </div>
+        <div class="card p">
+          <h3>Thông tin liên hệ</h3>
+          <p><i class="fa-solid fa-location-dot"></i> 204 Trần Tuấn Khải, P. An Đông, Quận 5, TP.HCM</p>
+          <p><i class="fa-solid fa-phone"></i> <a href="tel:0375119309">0375 119 309</a></p>
+          <p><i class="fa-solid fa-envelope"></i> <a href="mailto:thanhtamtravel59@gmail.com">thanhtamtravel59@gmail.com</a></p>
+          <div style="height:260px;border-radius:14px;overflow:hidden">
+            <iframe title="Bản đồ" width="100%" height="100%" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=204%20Tr%E1%BA%A7n%20Tu%E1%BA%A5n%20Kh%E1%BA%A3i%2C%20Qu%E1%BA%ADn%205%2C%20TP.HCM&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="lien-he">
+    <div class="container" style="padding:40px 0">
+      <div class="cols">
+        <div>
+          <div class="brand" style="color:#fff"><div class="logo"></div>Thuê Xe Thanh Tâm</div>
+          <p style="margin-top:12px;color:#9fb3dd">Giải pháp thuê xe du lịch – limousine cao cấp. Đồng hành an toàn trên mọi hành trình.</p>
+        </div>
+        <div>
+          <h4>Danh mục</h4>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li><a href="#gioi-thieu">Giới thiệu</a></li>
+            <li><a href="#dich-vu">Dịch vụ</a></li>
+            <li><a href="#thu-vien">Hình ảnh</a></li>
+            <li><a href="#danh-gia">Đánh giá</a></li>
+            <li><a href="#dat-xe">Đặt xe</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Liên hệ</h4>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li>Hotline: <a href="tel:03755119309">0375 511 9309</a></li>
+            <li>Email: <a href="mailto:thanhtamtravel59@gmail.com">thanhtamtravel59@gmail.com</a></li>
+            <li>Facebook • Zalo • Maps</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Giờ làm việc</h4>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li>Thứ 2–CN: 06:00–22:00</li>
+            <li>Hỗ trợ khẩn: 24/7</li>
+          </ul>
+        </div>
+      </div>
+      <hr style="border-color:#1b2a4e;margin:24px 0;opacity:.4">
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:#8aa3d6;font-size:14px">
+        <div>© <span id="year"></span> Thuê Xe – Bản mẫu. Thiết kế bởi bạn.</div>
+        <div>Đang online: 12 • Tháng: 1638 • Tổng: 13103</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple fake submit
+    document.getElementById('bookingForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value || 'bạn';
+      alert('Cảm ơn ' + name + '! Yêu cầu đã được ghi nhận. Chúng tôi sẽ liên hệ sớm.');
+      this.reset();
+    });
+
+    // Mobile menu (very basic)
+    const hamb = document.getElementById('openMenu');
+    hamb && hamb.addEventListener('click', ()=>{
+      const nav = document.querySelector('.menu');
+      if(!nav) return;
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.gap = '14px';
+      nav.style.position = 'absolute';
+      nav.style.right = '18px';
+      nav.style.top = '70px';
+      nav.style.background = '#fff';
+      nav.style.padding = '14px 18px';
+      nav.style.border = '1px solid #e5e7f0';
+      nav.style.borderRadius = '14px';
+      nav.style.boxShadow = '0 10px 30px rgba(0,0,0,.08)';
+    });
+      const reveals = document.querySelectorAll(".reveal");
+  window.addEventListener("scroll", () => {
+    for (let el of reveals) {
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+      if (elementTop < windowHeight - 50) {
+        el.classList.add("active");
+      }
+    }
+  });
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const captionText = document.getElementById("caption");
+  const closeBtn = document.querySelector("#lightbox .close");
+
+  document.querySelectorAll(".gallery img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "block";
+      lightboxImg.src = img.src;
+      captionText.innerHTML = img.alt;
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+  // Đóng khi click ra ngoài ảnh
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  });
+  </script>
+
+</body>
+</html>
