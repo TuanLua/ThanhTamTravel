@@ -27,6 +27,53 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* CSS */
+.btn-zalo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;        /* rộng hơn xíu để iPhone dễ chạm */
+  height: 50px;
+  z-index: 9999;      /* tránh bị đè */
+  border-radius: 50%;
+  overflow: visible;
+}
+
+.btn-zalo .zalo-outer,
+.btn-zalo .zalo-inner {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+}
+
+.btn-zalo .zalo-icon img {
+  width: 35px;        /* size cố định */
+  height: 35px;
+  border-radius: 50%;
+  display: block;
+}/* CSS ẩn menu trên mobile */
+@media (max-width: 768px) {
+  nav.menu {
+    display: none;               /* ẩn mặc định */
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;                   /* tùy chiều cao header */
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+
+  nav.menu.active {
+    display: flex;               /* hiện khi active */
+  }
+}
+
+
+    </style>
   </head>
   <body>
     <header>
@@ -55,11 +102,19 @@
           <a href="#lien-he">Liên hệ</a>
         </nav>
         <div class="cta">
-         <a class="btn-zalo btn-frame text-decoration-none" target="_blank" href="https://zalo.me/0375119309">
-      <div class="animated infinite zoomIn kenit-alo-circle"></div>
-      <div class="animated infinite pulse kenit-alo-circle-fill"></div>
-      <i><img class="lazy loaded" onerror="this.src='https://thuexebaomai.com/thumbs/35x35x2/assets/images/noimage.png';" data-src="https://thuexebaomai.com/assets/images/zl.png" alt="Zalo" src="https://thuexebaomai.com/assets/images/zl.png" data-was-processed="true"></i>
-  </a>
+        <!-- HTML -->
+<a class="btn-zalo" target="_blank" 
+   href="https://zalo.me/0375119309" 
+   rel="noopener noreferrer">
+  <div class="zalo-outer animated infinite zoomIn kenit-alo-circle"></div>
+  <div class="zalo-inner animated infinite pulse kenit-alo-circle-fill"></div>
+  <i class="zalo-icon">
+    <img src="https://thuexebaomai.com/assets/images/zl.png"
+         alt="Zalo"
+         onerror="this.src='https://thuexebaomai.com/thumbs/35x35x2/assets/images/noimage.png';">
+  </i>
+</a>
+
           <a class="btn primary" href="tel:0375119309"
             ><i class="fa-solid fa-phone"></i> Gọi ngay</a
           >
@@ -466,6 +521,29 @@
           lightbox.style.display = "none";
         }
       });
+      // JS toggle menu
+const openMenuBtn = document.getElementById('openMenu');
+const mainMenu = document.getElementById('mainMenu');
+
+// Mở/đóng menu khi bấm nút hamburger
+openMenuBtn.addEventListener('click', () => {
+  mainMenu.classList.toggle('active');
+});
+
+// Đóng menu khi click vào 1 link trong menu
+mainMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mainMenu.classList.remove('active');
+  });
+});
+
+// Đóng menu khi click ra ngoài (optional)
+document.addEventListener('click', (e) => {
+  if (!mainMenu.contains(e.target) && !openMenuBtn.contains(e.target)) {
+    mainMenu.classList.remove('active');
+  }
+});
+
     </script>
   </body>
 </html>
