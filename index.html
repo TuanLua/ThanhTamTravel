@@ -264,60 +264,69 @@
         </div>
         <div class="grid cols-2">
           <div class="card p">
-            <form id="bookingForm" action="https://formsubmit.co/tuanlua44@gmail.com" method="POST">
-              <div class="row">
-                <div>
-                  <label for="service" class="muted">Dịch vụ cần đặt*</label>
-                  <select id="service" required>
-                    <option value="">— Chọn dịch vụ —</option>
-                    <option>Xe 4 chỗ</option>
-                    <option>Xe 7 chỗ</option>
-                    <option>Xe 16 chỗ</option>
-                    <option>Xe 29–45 chỗ</option>
-                    <option>Limousine VIP</option>
-                    <option>Đưa đón sân bay</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="name" class="muted">Họ và tên*</label>
-                  <input id="name" required placeholder="Nguyễn Văn A" />
-                </div>
-              </div>
-              <div class="row">
-                <div>
-                  <label for="phone" class="muted">Điện thoại*</label>
-                  <input id="phone" required placeholder="09xx xxx xxx" />
-                </div>
-                <div>
-                  <label for="email" class="muted">Email</label>
-                  <input id="email" type="email" placeholder="ban@congty.vn" />
-                </div>
-              </div>
-              <div class="row">
-                <div>
-                  <label for="date" class="muted">Ngày đi*</label>
-                  <input id="date" type="date" required />
-                </div>
-                <div>
-                  <label for="time" class="muted">Giờ đón*</label>
-                  <input id="time" type="time" required />
-                </div>
-              </div>
-              <div>
-                <label for="route" class="muted">Tuyến / điểm đi – đến</label>
-                <input id="route" placeholder="TP.HCM ⇄ Đà Lạt / Sân bay Tân Sơn Nhất…" />
-              </div>
-              <div>
-                <label for="note" class="muted">Ghi chú</label>
-                <textarea id="note" placeholder="Số hành khách, hành lý, yêu cầu thêm…"></textarea>
-              </div>
-              <button class="btn primary" type="submit"
-                ><i class="fa-solid fa-paper-plane"></i> Gửi yêu cầu</button
-              >
-              <div class="notice"
-                >* Thông tin của bạn được bảo mật. Chúng tôi sẽ gọi lại xác nhận.</div
-              >
-            </form>
+           <form id="bookingForm" action="https://formsubmit.co/tuanlua44@gmail.com" method="POST">
+  <div class="row">
+    <div>
+      <label for="service" class="muted">Dịch vụ cần đặt*</label>
+      <select id="service" name="Dịch vụ" required>
+        <option value="">— Chọn dịch vụ —</option>
+        <option>Xe 4 chỗ</option>
+        <option>Xe 7 chỗ</option>
+        <option>Xe 16 chỗ</option>
+        <option>Xe 29–45 chỗ</option>
+        <option>Limousine VIP</option>
+        <option>Đưa đón sân bay</option>
+      </select>
+    </div>
+    <div>
+      <label for="name" class="muted">Họ và tên*</label>
+      <input id="name" name="Họ và tên" required placeholder="Nguyễn Văn A" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="phone" class="muted">Điện thoại*</label>
+      <input id="phone" name="Điện thoại" required placeholder="09xx xxx xxx" />
+    </div>
+    <div>
+      <label for="email" class="muted">Email</label>
+      <input id="email" name="Email" type="email" placeholder="ban@congty.vn" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="date" class="muted">Ngày đi*</label>
+      <input id="date" name="Ngày đi" type="date" required />
+    </div>
+    <div>
+      <label for="time" class="muted">Giờ đón*</label>
+      <input id="time" name="Giờ đón" type="time" required />
+    </div>
+  </div>
+
+  <div>
+    <label for="route" class="muted">Tuyến / điểm đi – đến</label>
+    <input id="route" name="Tuyến/Điểm đi-đến" placeholder="TP.HCM ⇄ Đà Lạt / Sân bay Tân Sơn Nhất…" />
+  </div>
+
+  <div>
+    <label for="note" class="muted">Ghi chú</label>
+    <textarea id="note" name="Ghi chú" placeholder="Số hành khách, hành lý, yêu cầu thêm…"></textarea>
+  </div>
+
+  <!-- Optional: ẩn captcha + trang cảm ơn -->
+  <input type="hidden" name="_captcha" value="false">
+
+  <button class="btn primary" type="submit">
+    <i class="fa-solid fa-paper-plane"></i> Gửi yêu cầu
+  </button>
+  <div class="notice">
+    * Thông tin của bạn được bảo mật. Chúng tôi sẽ gọi lại xác nhận.
+  </div>
+</form>
+
           </div>
           <div class="card p">
             <h3>Thông tin liên hệ</h3>
