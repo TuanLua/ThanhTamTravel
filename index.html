@@ -3,97 +3,270 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Thanh Tâm Travel Thuê Xe Liên Tỉnh</title>
+
     <meta
       name="description"
-      content="Thanh Tâm Travel Thuê Xe Liên Tỉnh Dịch vụ thuê xe cao cấp – đời mới, đẹp, sạch sẽ, chạy êm, tài xế chuyên nghiệp, giá cạnh tranh."
+      content="Thanh Tâm Travel - Thuê xe liên tỉnh, du lịch, Limousine cao cấp. Xe đời mới, đẹp, sạch sẽ, chạy êm, tài xế chuyên nghiệp, giá cạnh tranh."
     />
-    <link rel="icon" type="image/png" href="Images\15726482.png" sizes="64x64">
+
+    <link rel="icon" type="image/png" href="Images/15726482.png" sizes="64x64" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Font Awesome - chỉ dùng 1 phiên bản -->
     <link
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      integrity="sha512-4oVf3CqF7rZpLkz3T7NnL4rM3hGdQv9Wv2a1qj1P2V3T6p9y5GxJk4n7k1Z8n9c7b8a9c9k1l2m3n4o5p6"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+
+    <!-- CSS chính -->
     <link rel="stylesheet" href="styles.css" />
+
     <style>
-      /* CSS */
-.btn-zalo {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;        /* rộng hơn xíu để iPhone dễ chạm */
-  height: 50px;
-  z-index: 9999;      /* tránh bị đè */
-  border-radius: 50%;
-  overflow: visible;
-}
+      /* =========================
+         ZALO BUTTON
+      ========================= */
 
-.btn-zalo .zalo-outer,
-.btn-zalo .zalo-inner {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border-radius: 50%;
-}
+      .btn-zalo {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        z-index: 9999;
+        border-radius: 50%;
+        overflow: visible;
+        text-decoration: none;
+      }
 
-.btn-zalo .zalo-icon img {
-  width: 35px;        /* size cố định */
-  height: 35px;
-  border-radius: 50%;
-  display: block;
-}/* CSS ẩn menu trên mobile */
-@media (max-width: 768px) {
-  nav.menu {
-    display: none;               /* ẩn mặc định */
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    top: 60px;                   /* tùy chiều cao header */
-    left: 0;
-    width: 100%;
-    z-index: 999;
-  }
+      .btn-zalo .zalo-outer,
+      .btn-zalo .zalo-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        pointer-events: none;
+      }
 
-  nav.menu.active {
-    display: flex;               /* hiện khi active */
-  }
-}
+      .btn-zalo .zalo-outer {
+        border: 2px solid rgba(0, 123, 255, 0.25);
+        animation: zaloZoom 1.5s infinite;
+      }
 
+      .btn-zalo .zalo-inner {
+        background: rgba(0, 123, 255, 0.12);
+        animation: zaloPulse 1.5s infinite;
+      }
 
+      .btn-zalo .zalo-icon {
+        position: relative;
+        z-index: 2;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-zalo .zalo-icon img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: block;
+        object-fit: cover;
+      }
+
+      @keyframes zaloZoom {
+        0% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+
+        70% {
+          transform: scale(1.35);
+          opacity: 0;
+        }
+
+        100% {
+          transform: scale(1.35);
+          opacity: 0;
+        }
+      }
+
+      @keyframes zaloPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.7;
+        }
+
+        50% {
+          transform: scale(1.08);
+          opacity: 1;
+        }
+      }
+
+      /* =========================
+         MOBILE MENU
+      ========================= */
+
+      @media (max-width: 768px) {
+        .container.nav {
+          position: relative;
+        }
+
+        nav.menu {
+          display: none;
+          flex-direction: column;
+          gap: 0;
+          position: absolute;
+          top: calc(100% + 10px);
+          right: 18px;
+          left: auto;
+          width: min(280px, calc(100vw - 36px));
+          background: #fff;
+          padding: 10px;
+          z-index: 99999;
+          border: 1px solid #e5e7f0;
+          border-radius: 14px;
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        nav.menu.active {
+          display: flex;
+        }
+
+        nav.menu a {
+          display: block;
+          width: 100%;
+          padding: 12px 14px;
+          border-radius: 10px;
+        }
+
+        nav.menu a:hover {
+          background: #f3f6ff;
+        }
+
+        .hamb {
+          display: inline-flex !important;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .hamb {
+          display: none;
+        }
+      }
+
+      /* =========================
+         FORM MESSAGE
+      ========================= */
+
+      .form-status {
+        display: none;
+        margin-top: 15px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        background: #ecfdf5;
+        color: #047857;
+        border: 1px solid #a7f3d0;
+        font-size: 14px;
+      }
+
+      /* =========================
+         LIGHTBOX
+      ========================= */
+
+      #lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        background: rgba(0, 0, 0, 0.88);
+        padding: 30px;
+        text-align: center;
+      }
+
+      #lightbox .lightbox-content {
+        max-width: 90vw;
+        max-height: 80vh;
+        margin: auto;
+        display: block;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      #lightbox .close {
+        position: absolute;
+        right: 25px;
+        top: 15px;
+        color: #fff;
+        font-size: 42px;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      #lightbox .caption {
+        color: #fff;
+        margin-top: 15px;
+        font-size: 15px;
+      }
     </style>
   </head>
+
   <body>
+    <!-- =========================
+         HEADER
+    ========================= -->
+
     <header>
       <div class="topbar">
-        <span
-          ><i class="fa-solid fa-phone"></i> Hotline:
-          <a href="tel:0375119309">0375 119 309</a></span
-        >
+        <span>
+          <i class="fa-solid fa-phone"></i>
+          Hotline:
+          <a href="tel:0375119309">0375 119 309</a>
+        </span>
+
         <span>•</span>
-        <span
-          ><i class="fa-solid fa-envelope"></i> Email:
-          <a href="mailto:thanhtamtravel59@gmail.com">thanhtamtravel59@gmail.com</a></span
-        >
+
+        <span>
+          <i class="fa-solid fa-envelope"></i>
+          Email:
+          <a href="mailto:thanhtamtravel59@gmail.com">
+            thanhtamtravel59@gmail.com
+          </a>
+        </span>
       </div>
+
       <div class="container nav">
+        <!-- LOGO / BRAND -->
         <a class="brand" href="#">
           <div class="logo" aria-hidden="true"></div>
-          <span>Thanh Tâm <span style="color: #222">Travel Thuê Xe Liên Tỉnh</span></span>
+
+          <span>
+            Thanh Tâm
+            <span style="color: #222">Travel Thuê Xe Liên Tỉnh</span>
+          </span>
         </a>
-        <nav class="menu" aria-label="Main Navigation">
+
+        <!-- MENU -->
+        <nav
+          class="menu"
+          id="mainMenu"
+          aria-label="Main Navigation"
+        >
           <a href="#gioi-thieu">Giới thiệu</a>
           <a href="#dich-vu">Dịch vụ</a>
           <a href="#thu-vien">Hình ảnh</a>
@@ -101,347 +274,923 @@
           <a href="#dat-xe">Đặt xe</a>
           <a href="#lien-he">Liên hệ</a>
         </nav>
-        <div class="cta">
-        <!-- HTML -->
-<a class="btn-zalo" target="_blank" 
-   href="https://zalo.me/0375119309" 
-   rel="noopener noreferrer">
-  <div class="zalo-outer animated infinite zoomIn kenit-alo-circle"></div>
-  <div class="zalo-inner animated infinite pulse kenit-alo-circle-fill"></div>
-  <i class="zalo-icon">
-    <img src="https://thuexebaomai.com/assets/images/zl.png"
-         alt="Zalo"
-         onerror="this.src='https://thuexebaomai.com/thumbs/35x35x2/assets/images/noimage.png';">
-  </i>
-</a>
 
-          <a class="btn primary" href="tel:0375119309"
-            ><i class="fa-solid fa-phone"></i> Gọi ngay</a
+        <!-- CTA -->
+        <div class="cta">
+
+          <!-- ZALO -->
+          <a
+            class="btn-zalo"
+            target="_blank"
+            href="https://zalo.me/0375119309"
+            rel="noopener noreferrer"
+            aria-label="Liên hệ Zalo"
           >
-          <button class="hamb btn ghost" id="openMenu" aria-label="Mở menu"
-            ><i class="fa-solid fa-bars"></i
-          ></button>
+            <div class="zalo-outer"></div>
+            <div class="zalo-inner"></div>
+
+            <span class="zalo-icon">
+              <img
+                src="https://thuexebaomai.com/assets/images/zl.png"
+                alt="Zalo"
+                onerror="this.src='https://thuexebaomai.com/thumbs/35x35x2/assets/images/noimage.png';"
+              />
+            </span>
+          </a>
+
+          <!-- GỌI NGAY -->
+          <a class="btn primary" href="tel:0375119309">
+            <i class="fa-solid fa-phone"></i>
+            Gọi ngay
+          </a>
+
+          <!-- HAMBURGER -->
+          <button
+            class="hamb btn ghost"
+            id="openMenu"
+            type="button"
+            aria-label="Mở menu"
+            aria-expanded="false"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
       </div>
     </header>
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section class="hero">
       <div class="hero-media" aria-hidden="true">
-        <video autoplay muted loop playsinline poster="Images\2f42b9c4d7704216cebcdadff4068b13.jpg">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="Images/2f42b9c4d7704216cebcdadff4068b13.jpg"
+        >
           <source
-            src="Images\vecteezy_3d-car-driving-through-smoky-atmosphere-with-cinematic_54737443.mp4"
+            src="Images/vecteezy_3d-car-driving-through-smoky-atmosphere-with-cinematic_54737443.mp4"
             type="video/mp4"
           />
+
+          Trình duyệt của bạn không hỗ trợ video.
         </video>
       </div>
+
       <div class="container hero-inner">
         <div class="hero-card">
-          <div class="kicker">Thanh Tâm Travel Thương hiệu cho những hành trình đáng giá</div>
-          <h1>Thuê xe liên tỉnh - du lịch – Limousine cao cấp<br />Xe đẹp, tài xế chuyên nghiệp, giá tốt</h1>
-          <p
-            >Chúng tôi tập trung các tuyến hot: TP.HCM ⇄ Đà Lạt, Vũng Tàu, Phan Thiết, Mũi Né, Nha
-            Trang, sân bay… Hỗ trợ 24/7. </p
-          >
+
+          <div class="kicker">
+            Thanh Tâm Travel - Thương hiệu cho những hành trình đáng giá
+          </div>
+
+          <h1>
+            Thuê xe liên tỉnh - du lịch – Limousine cao cấp
+            <br />
+            Xe đẹp, tài xế chuyên nghiệp, giá tốt
+          </h1>
+
+          <p>
+            Chúng tôi tập trung các tuyến hot:
+            TP.HCM ⇄ Đà Lạt, Vũng Tàu, Phan Thiết, Mũi Né,
+            Nha Trang, sân bay… Hỗ trợ 24/7.
+          </p>
+
           <div class="lead-actions">
-            <a class="btn primary" href="#dat-xe"><i class="fa-solid fa-car"></i> Đặt xe ngay</a>
-            <a class="btn ghost" href="#bang-gia"
-              ><i class="fa-solid fa-file-invoice-dollar"></i> Số Điện Thoại : 0375119309</a
-            >
+            <a class="btn primary" href="#dat-xe">
+              <i class="fa-solid fa-car"></i>
+              Đặt xe ngay
+            </a>
+
+            <a class="btn ghost" href="tel:0375119309">
+              <i class="fa-solid fa-phone"></i>
+              0375 119 309
+            </a>
           </div>
         </div>
       </div>
+
       <!-- Scroll indicator -->
       <div class="scroll-down">
         <i class="fa-solid fa-angles-down"></i>
       </div>
     </section>
 
-    <!-- INTRO / BRAND -->
-    <!-- INTRO / BRAND -->
+    <!-- =========================
+         INTRO
+    ========================= -->
+
     <section id="gioi-thieu" class="intro-section with-bg">
       <div class="container">
+
         <div class="section-title">
           <h2>Vì sao chọn chúng tôi?</h2>
-          <span class="pill">Uy tín • Tận tâm • An toàn</span>
+          <span class="pill">
+            Uy tín • Tận tâm • An toàn
+          </span>
         </div>
+
         <div class="grid cols-3">
+
           <div class="card p service reveal">
-            <div class="icon-badge"><i class="fa-solid fa-shield-heart"></i></div>
+            <div class="icon-badge">
+              <i class="fa-solid fa-shield-heart"></i>
+            </div>
+
             <div>
               <h3>Dịch vụ chuẩn 5★</h3>
-              <p class="muted">Xe đời mới, vệ sinh kỹ, nước suối – khăn lạnh, hỗ trợ 24/7.</p>
+
+              <p class="muted">
+                Xe đời mới, vệ sinh kỹ, nước suối – khăn lạnh,
+                hỗ trợ 24/7.
+              </p>
             </div>
           </div>
+
           <div class="card p service reveal">
-            <div class="icon-badge"><i class="fa-solid fa-id-card-clip"></i></div>
+            <div class="icon-badge">
+              <i class="fa-solid fa-id-card-clip"></i>
+            </div>
+
             <div>
               <h3>Tài xế chuyên nghiệp</h3>
-              <p class="muted">Lịch sự, đúng giờ, rành đường – ưu tiên an toàn và trải nghiệm.</p>
+
+              <p class="muted">
+                Lịch sự, đúng giờ, rành đường –
+                ưu tiên an toàn và trải nghiệm.
+              </p>
             </div>
           </div>
+
           <div class="card p service reveal">
-            <div class="icon-badge"><i class="fa-solid fa-money-bill-wave"></i></div>
+            <div class="icon-badge">
+              <i class="fa-solid fa-money-bill-wave"></i>
+            </div>
+
             <div>
               <h3>Giá cạnh tranh</h3>
-              <p class="muted">Báo giá minh bạch, không phát sinh. Xuất hoá đơn khi cần.</p>
+
+              <p class="muted">
+                Báo giá minh bạch, không phát sinh.
+                Xuất hoá đơn khi cần.
+              </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- =========================
+         SERVICES
+    ========================= -->
+
     <section id="dich-vu" class="service-section with-bg">
       <div class="container">
+
         <div class="section-title">
           <h2>Dòng xe & dịch vụ</h2>
-          <span class="pill">4–45 chỗ • Limousine</span>
+
+          <span class="pill">
+            4–45 chỗ • Limousine
+          </span>
         </div>
+
         <div class="grid cols-4 service-grid">
+
           <div class="card p service-card">
-            <img src="Images\9x16awhite2025tototafortunerdr-2-4678.png" alt="Xe 4–7 chỗ" />
+            <img
+              src="Images/9x16awhite2025tototafortunerdr-2-4678.png"
+              alt="Xe 4–7 chỗ"
+            />
+
             <div class="service-info">
               <h3>Xe 4–7 chỗ</h3>
-              <p class="muted">Phù hợp công tác, gia đình nhỏ, đưa đón sân bay.</p>
+
+              <p class="muted">
+                Phù hợp công tác, gia đình nhỏ,
+                đưa đón sân bay.
+              </p>
             </div>
           </div>
+
           <div class="card p service-card">
-            <img src="Images\ford-transit-premium-16-cho-83201720171105-5134.png" alt="Xe 16 chỗ" />
+            <img
+              src="Images/ford-transit-premium-16-cho-83201720171105-5134.png"
+              alt="Xe 16 chỗ"
+            />
+
             <div class="service-info">
               <h3>Xe 16 chỗ</h3>
-              <p class="muted">Đi nhóm bạn, team nhỏ – rộng rãi, thoải mái.</p>
+
+              <p class="muted">
+                Đi nhóm bạn, team nhỏ –
+                rộng rãi, thoải mái.
+              </p>
             </div>
           </div>
+
           <div class="card p service-card">
-            <img src="Images\thue-xe-limousine-di-tinh-4-61630.jpeg" alt="Limousine VIP" />
+            <img
+              src="Images/thue-xe-limousine-di-tinh-4-61630.jpeg"
+              alt="Limousine VIP"
+            />
+
             <div class="service-info">
               <h3>Limousine VIP</h3>
-              <p class="muted">Ghế massage, rèm riêng tư, sạc USB – trải nghiệm cao cấp.</p>
+
+              <p class="muted">
+                Ghế massage, rèm riêng tư,
+                sạc USB – trải nghiệm cao cấp.
+              </p>
             </div>
           </div>
+
           <div class="card p service-card">
             <img
-              src="Images\z6854561972641a67cb8d24c79cc3eb5c1a18bf490e84d-3703.jpg"
+              src="Images/z6854561972641a67cb8d24c79cc3eb5c1a18bf490e84d-3703.jpg"
               alt="Xe 29–45 chỗ"
             />
+
             <div class="service-info">
               <h3>Xe 29–45 chỗ</h3>
-              <p class="muted">Tour đoàn, sự kiện, cưới hỏi – tối ưu chi phí.</p>
+
+              <p class="muted">
+                Tour đoàn, sự kiện, cưới hỏi –
+                tối ưu chi phí.
+              </p>
             </div>
           </div>
+
           <div class="card p service-card">
             <img
-              src="Images\z6854561972641a67cb8d24c79cc3eb5c1a18bf490e84d-3703.jpg"
-              alt="Xe 29–45 chỗ"
+              src="Images/z6854561972641a67cb8d24c79cc3eb5c1a18bf490e84d-3703.jpg"
+              alt="Xe liên tỉnh"
             />
+
             <div class="service-info">
               <h3>Xe liên tỉnh</h3>
-              <p class="muted">Thuê xe liên tỉnh giá rẻ phải chăng</p>
+
+              <p class="muted">
+                Thuê xe liên tỉnh giá phải chăng,
+                phục vụ tận nơi.
+              </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- GALLERY -->
+    <!-- =========================
+         GALLERY
+    ========================= -->
+
     <section id="thu-vien">
       <div class="container">
+
         <div class="section-title">
           <h2>Một số hình ảnh</h2>
-          <span class="pill">Xe đẹp – Nội thất sạch – Bảo trì định kỳ</span>
+
+          <span class="pill">
+            Xe đẹp – Nội thất sạch – Bảo trì định kỳ
+          </span>
         </div>
+
         <div class="gallery">
+
           <img
             src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1200&auto=format&fit=crop"
-            alt="Gallery item"
+            alt="Xe du lịch Thanh Tâm Travel"
+            loading="lazy"
           />
+
           <img
             src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop"
-            alt="Gallery item"
+            alt="Xe ô tô du lịch"
+            loading="lazy"
           />
-          <img src="Images\hyunhdai-universe-6-1-65440.jpg" alt="Gallery item" />
+
           <img
-            src="Images\z6859718122766d6036bdedc0897f82ce4b9b5218b4e16-5085.jpg"
-            alt="Gallery item"
+            src="Images/hyunhdai-universe-6-1-65440.jpg"
+            alt="Hyundai Universe"
+            loading="lazy"
           />
-          <img src="Images\transit-limousine-10-cho-57780.jpg" alt="Gallery item" />
-          <img src="Images\luxury-limousine-interior-640x800.jpg" alt="Gallery item" />
-          <img src="Images\hyunhdai-universe-6-1-65440.jpg" alt="Gallery item" />
-          <img src="Images\chi-tiet-toyota-fortuner-2021-may-xang-3-2648.jpg" alt="Gallery item" />
+
+          <img
+            src="Images/z6859718122766d6036bdedc0897f82ce4b9b5218b4e16-5085.jpg"
+            alt="Xe du lịch"
+            loading="lazy"
+          />
+
+          <img
+            src="Images/transit-limousine-10-cho-57780.jpg"
+            alt="Transit Limousine"
+            loading="lazy"
+          />
+
+          <img
+            src="Images/luxury-limousine-interior-640x800.jpg"
+            alt="Nội thất Limousine VIP"
+            loading="lazy"
+          />
+
+          <img
+            src="Images/hyunhdai-universe-6-1-65440.jpg"
+            alt="Xe Hyundai Universe"
+            loading="lazy"
+          />
+
+          <img
+            src="Images/chi-tiet-toyota-fortuner-2021-may-xang-3-2648.jpg"
+            alt="Toyota Fortuner"
+            loading="lazy"
+          />
+
         </div>
       </div>
     </section>
-    <div id="lightbox">
-      <span class="close">&times;</span>
-      <img class="lightbox-content" id="lightbox-img" />
-      <div class="caption" id="caption"></div>
+
+    <!-- LIGHTBOX -->
+
+    <div id="lightbox" aria-hidden="true">
+
+      <span
+        class="close"
+        role="button"
+        aria-label="Đóng"
+      >
+        &times;
+      </span>
+
+      <img
+        class="lightbox-content"
+        id="lightbox-img"
+        alt=""
+      />
+
+      <div
+        class="caption"
+        id="caption"
+      ></div>
+
     </div>
-    <!-- TESTIMONIALS -->
-    <section id="danh-gia" style="background: #f7f9ff">
+
+    <!-- =========================
+         TESTIMONIALS
+    ========================= -->
+
+    <section
+      id="danh-gia"
+      style="background: #f7f9ff"
+    >
       <div class="container">
+
         <div class="section-title">
           <h2>Đánh giá của khách hàng</h2>
-          <span class="pill">Thật – Nhanh – Tích cực</span>
+
+          <span class="pill">
+            Thật – Nhanh – Tích cực
+          </span>
         </div>
-        <div class="grid cols-3 testi" id="testiList">
+
+        <div
+          class="grid cols-3 testi"
+          id="testiList"
+        >
+
           <div class="card p quote">
-            <img class="avatar" src="https://i.pravatar.cc/112?img=11" alt="Khách 1" />
+
+            <img
+              class="avatar"
+              src="https://i.pravatar.cc/112?img=11"
+              alt="Khách hàng 1"
+              loading="lazy"
+            />
+
             <div>
-              <p>“Xe sạch sẽ, chạy êm, tài xế dễ thương. Nhóm mình đi Vũng Tàu rất ưng!”</p>
-              <div class="muted">Nguyễn Văn Hưng • Nhân viên văn phòng</div>
+              <p>
+                “Xe sạch sẽ, chạy êm, tài xế dễ thương.
+                Nhóm mình đi Vũng Tàu rất ưng!”
+              </p>
+
+              <div class="muted">
+                Nguyễn Văn Hưng • Nhân viên văn phòng
+              </div>
             </div>
+
           </div>
+
           <div class="card p quote">
-            <img class="avatar" src="https://i.pravatar.cc/112?img=32" alt="Khách 2" />
+
+            <img
+              class="avatar"
+              src="https://i.pravatar.cc/112?img=32"
+              alt="Khách hàng 2"
+              loading="lazy"
+            />
+
             <div>
-              <p>“Báo giá rõ ràng, không phát sinh. Sẽ tiếp tục sử dụng cho chuyến Đà Lạt.”</p>
-              <div class="muted">Lê Thị Kim Liên • Chủ shop thời trang</div>
+              <p>
+                “Báo giá rõ ràng, không phát sinh.
+                Sẽ tiếp tục sử dụng cho chuyến Đà Lạt.”
+              </p>
+
+              <div class="muted">
+                Lê Thị Kim Liên • Chủ shop thời trang
+              </div>
             </div>
+
           </div>
+
           <div class="card p quote">
-            <img class="avatar" src="https://i.pravatar.cc/112?img=56" alt="Khách 3" />
+
+            <img
+              class="avatar"
+              src="https://i.pravatar.cc/112?img=56"
+              alt="Khách hàng 3"
+              loading="lazy"
+            />
+
             <div>
-              <p>“Limousine ghế massage quá đã. Cả gia đình thoải mái, bé ngủ ngon suốt đường.”</p>
-              <div class="muted">Phạm Lê Kiều Hương • Chủ Spa</div>
+              <p>
+                “Limousine ghế massage quá đã.
+                Cả gia đình thoải mái, bé ngủ ngon
+                suốt đường.”
+              </p>
+
+              <div class="muted">
+                Phạm Lê Kiều Hương • Chủ Spa
+              </div>
             </div>
+
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- BOOKING -->
+    <!-- =========================
+         BOOKING
+    ========================= -->
+
     <section id="dat-xe" class="booking">
       <div class="container">
+
         <div class="section-title">
           <h2>Đăng ký đặt xe</h2>
-          <span class="pill">Phản hồi trong 5–10 phút</span>
+
+          <span class="pill">
+            Phản hồi trong 5–10 phút
+          </span>
         </div>
+
         <div class="grid cols-2">
+
+          <!-- FORM -->
+
           <div class="card p">
-           <form id="bookingForm" action="https://formsubmit.co/thanhtamtravel59@gmail.com" method="POST">
-  <div class="row">
-    <div>
-      <label for="service" class="muted">Dịch vụ cần đặt*</label>
-      <select id="service" name="Service" required>
-        <option value="">— Chọn dịch vụ —</option>
-        <option>Xe 4 chỗ</option>
-        <option>Xe 7 chỗ</option>
-        <option>Xe 16 chỗ</option>
-        <option>Xe 29–45 chỗ</option>
-        <option>Limousine VIP</option>
-        <option>Đưa đón sân bay</option>
-      </select>
-    </div>
-    <div>
-      <label for="name" class="muted">Họ và tên*</label>
-      <input id="name" name="Name" required placeholder="Nguyễn Văn A" />
-    </div>
-  </div>
 
-  <div class="row">
-    <div>
-      <label for="phone" class="muted">Điện thoại*</label>
-      <input id="phone" name="Phone" required placeholder="09xx xxx xxx" />
-    </div>
-    <div>
-      <label for="email" class="muted">Email</label>
-      <input id="email" name="Email" type="email" placeholder="ban@congty.vn" />
-    </div>
-  </div>
+            <form
+              id="bookingForm"
+              action="https://formsubmit.co/thanhtamtravel59@gmail.com"
+              method="POST"
+            >
 
-  <div class="row">
-    <div>
-      <label for="date" class="muted">Ngày đi*</label>
-      <input id="date" name="DateFrom" type="date" required />
-    </div>
-    <div>
-      <label for="time" class="muted">Giờ đón*</label>
-      <input id="time" name="Time" type="time" required />
-    </div>
-  </div>
+              <!-- FormSubmit settings -->
 
-  <div>
-    <label for="route" class="muted">Tuyến / điểm đi – đến</label>
-    <input id="route" name="PlaceTo" placeholder="TP.HCM ⇄ Đà Lạt / Sân bay Tân Sơn Nhất…" />
-  </div>
+              <input
+                type="hidden"
+                name="_subject"
+                value="🚗 YÊU CẦU ĐẶT XE MỚI - Thanh Tâm Travel"
+              />
 
-  <div>
-    <label for="note" class="muted">Ghi chú</label>
-    <textarea id="note" name="message" placeholder="Số hành khách, hành lý, yêu cầu thêm…"></textarea>
-  </div>
+              <input
+                type="hidden"
+                name="_captcha"
+                value="false"
+              />
 
-  <!-- Optional: ẩn captcha + trang cảm ơn -->
-  <input type="hidden" name="_captcha" value="false">
+              <input
+                type="hidden"
+                name="_template"
+                value="table"
+              />
 
-  <button class="btn primary" type="submit">
-    <i class="fa-solid fa-paper-plane"></i> Gửi yêu cầu
-  </button>
-  <div class="notice">
-    * Thông tin của bạn được bảo mật. Chúng tôi sẽ gọi lại xác nhận.
-  </div>
-</form>
+              <!--
+                Sau khi FormSubmit xử lý xong,
+                khách sẽ được chuyển về trang chủ.
+              -->
+              <input
+                type="hidden"
+                name="_next"
+                value="https://thanhtamtravel.com/"
+              />
+
+              <div class="row">
+
+                <div>
+                  <label
+                    for="service"
+                    class="muted"
+                  >
+                    Dịch vụ cần đặt*
+                  </label>
+
+                  <select
+                    id="service"
+                    name="Service"
+                    required
+                  >
+                    <option value="">
+                      — Chọn dịch vụ —
+                    </option>
+
+                    <option value="Xe 4 chỗ">
+                      Xe 4 chỗ
+                    </option>
+
+                    <option value="Xe 7 chỗ">
+                      Xe 7 chỗ
+                    </option>
+
+                    <option value="Xe 16 chỗ">
+                      Xe 16 chỗ
+                    </option>
+
+                    <option value="Xe 29–45 chỗ">
+                      Xe 29–45 chỗ
+                    </option>
+
+                    <option value="Limousine VIP">
+                      Limousine VIP
+                    </option>
+
+                    <option value="Đưa đón sân bay">
+                      Đưa đón sân bay
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    for="name"
+                    class="muted"
+                  >
+                    Họ và tên*
+                  </label>
+
+                  <input
+                    id="name"
+                    name="Name"
+                    required
+                    autocomplete="name"
+                    placeholder="Nguyễn Văn A"
+                  />
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div>
+                  <label
+                    for="phone"
+                    class="muted"
+                  >
+                    Điện thoại*
+                  </label>
+
+                  <input
+                    id="phone"
+                    name="Phone"
+                    type="tel"
+                    required
+                    autocomplete="tel"
+                    placeholder="09xx xxx xxx"
+                    pattern="[0-9+\s().-]{9,20}"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="email"
+                    class="muted"
+                  >
+                    Email
+                  </label>
+
+                  <input
+                    id="email"
+                    name="Email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="ban@congty.vn"
+                  />
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div>
+                  <label
+                    for="date"
+                    class="muted"
+                  >
+                    Ngày đi*
+                  </label>
+
+                  <input
+                    id="date"
+                    name="DateFrom"
+                    type="date"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label
+                    for="time"
+                    class="muted"
+                  >
+                    Giờ đón*
+                  </label>
+
+                  <input
+                    id="time"
+                    name="Time"
+                    type="time"
+                    required
+                  />
+                </div>
+
+              </div>
+
+              <div>
+
+                <label
+                  for="route"
+                  class="muted"
+                >
+                  Tuyến / điểm đi – đến
+                </label>
+
+                <input
+                  id="route"
+                  name="PlaceTo"
+                  placeholder="TP.HCM ⇄ Đà Lạt / Sân bay Tân Sơn Nhất…"
+                />
+
+              </div>
+
+              <div>
+
+                <label
+                  for="note"
+                  class="muted"
+                >
+                  Ghi chú
+                </label>
+
+                <textarea
+                  id="note"
+                  name="Message"
+                  placeholder="Số hành khách, hành lý, yêu cầu thêm…"
+                ></textarea>
+
+              </div>
+
+              <button
+                class="btn primary"
+                type="submit"
+                id="submitBtn"
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+                Gửi yêu cầu
+              </button>
+
+              <div class="notice">
+                * Thông tin của bạn được bảo mật.
+                Chúng tôi sẽ gọi lại xác nhận.
+              </div>
+
+              <div
+                class="form-status"
+                id="formStatus"
+                role="status"
+              ></div>
+
+            </form>
 
           </div>
+
+          <!-- CONTACT -->
+
           <div class="card p">
-            <h3>Thông tin liên hệ</h3>
-            <p
-              ><i class="fa-solid fa-location-dot"></i> 49D Ấp 7 Xã Phú Hòa Đông, Củ Chi,
-              TP.HCM</p
+
+            <h3>
+              Thông tin liên hệ
+            </h3>
+
+            <p>
+              <i class="fa-solid fa-location-dot"></i>
+              49D Ấp 7, Xã Phú Hòa Đông,
+              Củ Chi, TP.HCM
+            </p>
+
+            <p>
+              <i class="fa-solid fa-phone"></i>
+
+              <a href="tel:0375119309">
+                0375 119 309
+              </a>
+            </p>
+
+            <p>
+              <i class="fa-solid fa-envelope"></i>
+
+              <a
+                href="mailto:thanhtamtravel59@gmail.com"
+              >
+                thanhtamtravel59@gmail.com
+              </a>
+            </p>
+
+            <div
+              style="
+                height: 260px;
+                border-radius: 14px;
+                overflow: hidden;
+              "
             >
-            <p><i class="fa-solid fa-phone"></i> <a href="tel:0375119309">0375 119 309</a></p>
-            <p
-              ><i class="fa-solid fa-envelope"></i>
-              <a href="mailto:thanhtamtravel59@gmail.com">thanhtamtravel59@gmail.com</a></p
-            >
-            <div style="height: 260px; border-radius: 14px; overflow: hidden">
-             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125317.84555811573!2d106.39335286864345!3d11.024917167139234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d2dae39063e7%3A0xd53f6846390398d9!2zUGjDuiBIw7JhIMSQw7RuZywgQ-G7pyBDaGksIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1757948333906!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125317.84555811573!2d106.39335286864345!3d11.024917167139234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d2dae39063e7%3A0xd53f6846390398d9!2zUGjDuiBIw7JhIMSQw7RuZywgQ-G7pyBDaGksIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1757948333906!5m2!1svi!2s"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Bản đồ Thanh Tâm Travel"
+              ></iframe>
             </div>
+
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
     <footer id="lien-he">
-      <div class="container" style="padding: 40px 0">
+
+      <div
+        class="container"
+        style="padding: 40px 0"
+      >
+
         <div class="cols">
+
           <div>
-            <div class="brand" style="color: #fff"><div class="logo"></div>Thuê Xe Thanh Tâm</div>
-            <p style="margin-top: 12px; color: #9fb3dd"
-              >Giải pháp thuê xe du lịch – limousine cao cấp. Đồng hành an toàn trên mọi hành
-              trình.</p
+
+            <div
+              class="brand"
+              style="color: #fff"
             >
+              <div class="logo"></div>
+              Thuê Xe Thanh Tâm
+            </div>
+
+            <p
+              style="
+                margin-top: 12px;
+                color: #9fb3dd;
+              "
+            >
+              Giải pháp thuê xe du lịch –
+              limousine cao cấp.
+              Đồng hành an toàn trên mọi hành trình.
+            </p>
+
           </div>
+
           <div>
+
             <h4>Danh mục</h4>
-            <ul style="list-style: none; padding: 0; margin: 0">
-              <li><a href="#gioi-thieu">Giới thiệu</a></li>
-              <li><a href="#dich-vu">Dịch vụ</a></li>
-              <li><a href="#thu-vien">Hình ảnh</a></li>
-              <li><a href="#danh-gia">Đánh giá</a></li>
-              <li><a href="#dat-xe">Đặt xe</a></li>
+
+            <ul
+              style="
+                list-style: none;
+                padding: 0;
+                margin: 0;
+              "
+            >
+              <li>
+                <a href="#gioi-thieu">
+                  Giới thiệu
+                </a>
+              </li>
+
+              <li>
+                <a href="#dich-vu">
+                  Dịch vụ
+                </a>
+              </li>
+
+              <li>
+                <a href="#thu-vien">
+                  Hình ảnh
+                </a>
+              </li>
+
+              <li>
+                <a href="#danh-gia">
+                  Đánh giá
+                </a>
+              </li>
+
+              <li>
+                <a href="#dat-xe">
+                  Đặt xe
+                </a>
+              </li>
             </ul>
+
           </div>
+
           <div>
+
             <h4>Liên hệ</h4>
-            <ul style="list-style: none; padding: 0; margin: 0">
-              <li>Hotline: <a href="tel:03755119309">0375 511 9309</a></li>
-              <li
-                >Email: <a href="mailto:thanhtamtravel@gmail.com">thanhtamtravel59@gmail.com</a></li
-              >
-              <li>Facebook • Zalo • Maps</li>
+
+            <ul
+              style="
+                list-style: none;
+                padding: 0;
+                margin: 0;
+              "
+            >
+              <li>
+                Hotline:
+                <a href="tel:0375119309">
+                  0375 119 309
+                </a>
+              </li>
+
+              <li>
+                Email:
+                <a
+                  href="mailto:thanhtamtravel59@gmail.com"
+                >
+                  thanhtamtravel59@gmail.com
+                </a>
+              </li>
+
+              <li>
+                Facebook • Zalo • Maps
+              </li>
             </ul>
+
           </div>
+
           <div>
+
             <h4>Giờ làm việc</h4>
-            <ul style="list-style: none; padding: 0; margin: 0">
-              <li>Thứ 2–CN: 06:00–22:00</li>
-              <li>Hỗ trợ khẩn: 24/7</li>
+
+            <ul
+              style="
+                list-style: none;
+                padding: 0;
+                margin: 0;
+              "
+            >
+              <li>
+                Thứ 2–CN: 06:00–22:00
+              </li>
+
+              <li>
+                Hỗ trợ khẩn: 24/7
+              </li>
             </ul>
+
           </div>
+
         </div>
-        <hr style="border-color: #1b2a4e; margin: 24px 0; opacity: 0.4" />
+
+        <hr
+          style="
+            border-color: #1b2a4e;
+            margin: 24px 0;
+            opacity: 0.4;
+          "
+        />
+
         <div
           style="
             display: flex;
@@ -452,98 +1201,354 @@
             font-size: 14px;
           "
         >
-          <div>© <span id="year"></span> Thuê Xe – Bản mẫu. Thiết kế bởi bạn.</div>
-          <div>Đang online: 12 • Tháng: 1638 • Tổng: 13103</div>
+
+          <div>
+            ©
+            <span id="year"></span>
+            Thuê Xe Thanh Tâm.
+            Bản quyền thuộc về Thanh Tâm Travel.
+          </div>
+
+          <div>
+            Đang online: 12 • Tháng: 1638 • Tổng: 13103
+          </div>
+
         </div>
+
       </div>
+
     </footer>
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
     <script>
-      // Year
-      document.getElementById("year").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
 
-      // Simple fake submit
-      document.getElementById("bookingForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-        const name = document.getElementById("name").value || "bạn";
-        alert("Cảm ơn " + name + "! Yêu cầu đã được ghi nhận. Chúng tôi sẽ liên hệ sớm.");
-        this.reset();
-      });
+        /* =========================
+           YEAR
+        ========================= */
 
-      // Mobile menu (very basic)
-      const hamb = document.getElementById("openMenu");
-      hamb &&
-        hamb.addEventListener("click", () => {
-          const nav = document.querySelector(".menu");
-          if (!nav) return;
-          nav.style.display = nav.style.display === "flex" ? "none" : "flex";
-          nav.style.flexDirection = "column";
-          nav.style.gap = "14px";
-          nav.style.position = "absolute";
-          nav.style.right = "18px";
-          nav.style.top = "70px";
-          nav.style.background = "#fff";
-          nav.style.padding = "14px 18px";
-          nav.style.border = "1px solid #e5e7f0";
-          nav.style.borderRadius = "14px";
-          nav.style.boxShadow = "0 10px 30px rgba(0,0,0,.08)";
-        });
-      const reveals = document.querySelectorAll(".reveal");
-      window.addEventListener("scroll", () => {
-        for (let el of reveals) {
-          const windowHeight = window.innerHeight;
-          const elementTop = el.getBoundingClientRect().top;
-          if (elementTop < windowHeight - 50) {
-            el.classList.add("active");
-          }
+        const yearElement = document.getElementById("year");
+
+        if (yearElement) {
+          yearElement.textContent = new Date().getFullYear();
         }
-      });
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-      const captionText = document.getElementById("caption");
-      const closeBtn = document.querySelector("#lightbox .close");
 
-      document.querySelectorAll(".gallery img").forEach((img) => {
-        img.addEventListener("click", () => {
-          lightbox.style.display = "block";
-          lightboxImg.src = img.src;
-          captionText.innerHTML = img.alt;
-        });
-      });
 
-      closeBtn.addEventListener("click", () => {
-        lightbox.style.display = "none";
-      });
+        /* =========================
+           MOBILE MENU
+        ========================= */
 
-      // Đóng khi click ra ngoài ảnh
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) {
+        const openMenuBtn =
+          document.getElementById("openMenu");
+
+        const mainMenu =
+          document.getElementById("mainMenu");
+
+        if (openMenuBtn && mainMenu) {
+
+          openMenuBtn.addEventListener(
+            "click",
+            function (event) {
+
+              event.stopPropagation();
+
+              const isActive =
+                mainMenu.classList.toggle("active");
+
+              openMenuBtn.setAttribute(
+                "aria-expanded",
+                isActive ? "true" : "false"
+              );
+
+            }
+          );
+
+
+          /* Đóng menu khi click link */
+
+          mainMenu
+            .querySelectorAll("a")
+            .forEach(function (link) {
+
+              link.addEventListener(
+                "click",
+                function () {
+
+                  mainMenu.classList.remove("active");
+
+                  openMenuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                  );
+
+                }
+              );
+
+            });
+
+
+          /* Đóng menu khi click bên ngoài */
+
+          document.addEventListener(
+            "click",
+            function (event) {
+
+              if (
+                !mainMenu.contains(event.target) &&
+                !openMenuBtn.contains(event.target)
+              ) {
+
+                mainMenu.classList.remove("active");
+
+                openMenuBtn.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+
+              }
+
+            }
+          );
+
+
+          /* Đóng menu khi chuyển về desktop */
+
+          window.addEventListener(
+            "resize",
+            function () {
+
+              if (window.innerWidth > 768) {
+
+                mainMenu.classList.remove("active");
+
+                openMenuBtn.setAttribute(
+                  "aria-expanded",
+                  "false"
+                );
+
+              }
+
+            }
+          );
+
+        }
+
+
+        /* =========================
+           REVEAL ON SCROLL
+        ========================= */
+
+        const reveals =
+          document.querySelectorAll(".reveal");
+
+
+        function revealElements() {
+
+          const windowHeight =
+            window.innerHeight;
+
+          reveals.forEach(function (el) {
+
+            const elementTop =
+              el.getBoundingClientRect().top;
+
+            if (elementTop < windowHeight - 50) {
+              el.classList.add("active");
+            }
+
+          });
+
+        }
+
+
+        window.addEventListener(
+          "scroll",
+          revealElements,
+          { passive: true }
+        );
+
+        revealElements();
+
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        const lightbox =
+          document.getElementById("lightbox");
+
+        const lightboxImg =
+          document.getElementById("lightbox-img");
+
+        const captionText =
+          document.getElementById("caption");
+
+        const closeBtn =
+          document.querySelector("#lightbox .close");
+
+
+        document
+          .querySelectorAll(".gallery img")
+          .forEach(function (img) {
+
+            img.addEventListener(
+              "click",
+              function () {
+
+                lightbox.style.display = "block";
+
+                lightbox.setAttribute(
+                  "aria-hidden",
+                  "false"
+                );
+
+                lightboxImg.src = img.src;
+
+                lightboxImg.alt =
+                  img.alt || "Hình ảnh";
+
+                captionText.textContent =
+                  img.alt || "";
+
+                document.body.style.overflow =
+                  "hidden";
+
+              }
+            );
+
+          });
+
+
+        function closeLightbox() {
+
           lightbox.style.display = "none";
+
+          lightbox.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+
+          document.body.style.overflow =
+            "";
+
+          lightboxImg.src = "";
+
         }
+
+
+        if (closeBtn) {
+
+          closeBtn.addEventListener(
+            "click",
+            closeLightbox
+          );
+
+        }
+
+
+        lightbox.addEventListener(
+          "click",
+          function (event) {
+
+            if (
+              event.target === lightbox
+            ) {
+              closeLightbox();
+            }
+
+          }
+        );
+
+
+        document.addEventListener(
+          "keydown",
+          function (event) {
+
+            if (
+              event.key === "Escape" &&
+              lightbox.style.display === "block"
+            ) {
+              closeLightbox();
+            }
+
+          }
+        );
+
+
+        /* =========================
+           DATE - KHÔNG CHO CHỌN NGÀY QUÁ KHỨ
+        ========================= */
+
+        const dateInput =
+          document.getElementById("date");
+
+        if (dateInput) {
+
+          const today =
+            new Date();
+
+          const year =
+            today.getFullYear();
+
+          const month =
+            String(today.getMonth() + 1)
+              .padStart(2, "0");
+
+          const day =
+            String(today.getDate())
+              .padStart(2, "0");
+
+          dateInput.min =
+            `${year}-${month}-${day}`;
+
+        }
+
+
+        /* =========================
+           BOOKING FORM
+        ========================= */
+
+        const bookingForm =
+          document.getElementById("bookingForm");
+
+        const submitBtn =
+          document.getElementById("submitBtn");
+
+
+        if (bookingForm) {
+
+          bookingForm.addEventListener(
+            "submit",
+            function () {
+
+              /*
+                QUAN TRỌNG:
+
+                KHÔNG dùng e.preventDefault() ở đây.
+
+                Form sẽ được gửi trực tiếp tới:
+                https://formsubmit.co/thanhtamtravel59@gmail.com
+              */
+
+              if (submitBtn) {
+
+                submitBtn.disabled = true;
+
+                submitBtn.innerHTML =
+                  '<i class="fa-solid fa-spinner fa-spin"></i> Đang gửi...';
+
+              }
+
+            }
+          );
+
+        }
+
       });
-      // JS toggle menu
-const openMenuBtn = document.getElementById('openMenu');
-const mainMenu = document.getElementById('mainMenu');
-
-// Mở/đóng menu khi bấm nút hamburger
-openMenuBtn.addEventListener('click', () => {
-  mainMenu.classList.toggle('active');
-});
-
-// Đóng menu khi click vào 1 link trong menu
-mainMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    mainMenu.classList.remove('active');
-  });
-});
-
-// Đóng menu khi click ra ngoài (optional)
-document.addEventListener('click', (e) => {
-  if (!mainMenu.contains(e.target) && !openMenuBtn.contains(e.target)) {
-    mainMenu.classList.remove('active');
-  }
-});
-
     </script>
+
   </body>
 </html>
